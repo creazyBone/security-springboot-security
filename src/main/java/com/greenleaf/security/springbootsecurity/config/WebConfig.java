@@ -12,7 +12,12 @@ public class WebConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         //没用Security时，login页面通过ViewController来跳转。
         //默认URL根路径重定向到/login，此跳转路径由Security提供
-        registry.addViewController("/").setViewName("redirect:/login");
+     //   registry.addViewController("/").setViewName("redirect:/login");
+
+        //自定义登录页面
+        registry.addViewController("/").setViewName("redirect:/login-view");
+        registry.addViewController("/login-view").setViewName("login");
+        registry.addViewController("/login-view2").setViewName("hello");
     }
 
 }
