@@ -27,10 +27,14 @@ public class LoginController {
     }
 
     @GetMapping(value = "/q/q3",produces = {"text/plain;charset=utf-8"})
+    public String q3(){
+        return "访问资源q3";
+    }
+
+    @GetMapping(value = "/r/r3",produces = {"text/plain;charset=utf-8"})
     public String r3(){
         return "访问资源3";
     }
-
 
     private String getUsername(){
         String username;

@@ -19,7 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     //User-->UserDetails
     //InMemoryUserDetailsManager-->UserDetailsManager-->UserDetailsService
-    //
+
   /*  @Bean
     //定义用户信息服务（查询用户信息）
     public UserDetailsService userDetailsService(){
@@ -41,13 +41,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()//禁用防止csrf攻击
+        http.csrf().disable()//禁用对csrf的限制,开启时会限制除了get以外的大多数方法
                 .authorizeRequests()
             //    .anyRequest().authenticated()//任意请求需要登录
                 .antMatchers("/r/r1").hasAuthority("p1")
                 .antMatchers("/r/r2").hasAuthority("p2")
                 .antMatchers("/r/**").authenticated()//所有/r/**的请求必须认证通过
-         //       .anyRequest().permitAll()//除了/r/**，其他的请求可以访问。放在前面和放在后面对于权限控制会有差异。细节控制写在前面
+             //   .anyRequest().permitAll()//除了/r/**，其他的请求可以访问。放在前面和放在后面对于权限控制会有差异。细节控制写在前面
             .and()
                 .formLogin()//开启支持基于表单的身份验证
                 .loginPage("/login-view"). permitAll()//指定自定义登录页，SpringSecurity会以重定向的方式跳转到/login-view

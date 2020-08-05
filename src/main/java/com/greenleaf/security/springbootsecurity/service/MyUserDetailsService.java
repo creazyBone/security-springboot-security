@@ -11,9 +11,17 @@ public class MyUserDetailsService implements UserDetailsService{
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+       /* UserDto dto = userDao.getUserByUsername(username);
+        if(dto == null){
+            return null;//直接返回null，由DaoAuthenticationProvider来抛异常
+        }
+        UserDetails userDetails = User.withUsername(dto.getUsername()).password(dto.getUserPassword()).authorities("p1").build();*/
         //模拟数据库查询
         System.out.println("username="+username);
-        UserDetails userDetails = User.withUsername("zhangsan").password("$2a$10$ri5af5YypS/I5cSkUDY/p.7Wfi/hcIh1DkE20si1HXhqQMG.Ckv8S").authorities("p1").build();
+        UserDetails userDetails = User.withUsername("zhangsan").
+                password("$2a$10$ri5af5YypS/I5cSkUDY/p.7Wfi/hcIh1DkE20si1HXhqQMG.Ckv8S")
+                .authorities("p1").build();
       //  UserDetails userDetails = User.withUsername("zhangsan").password("123").authorities("p1").build();
         return userDetails;
     }
